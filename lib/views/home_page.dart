@@ -6,11 +6,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
-      // backgroundColor: Colors.grey.shade300,
       body: Container(
         child: SingleChildScrollView(
-                  child: Column(
+          child: Column(
             children: [
               HeaderImage(),
               DropDownCities(),

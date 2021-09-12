@@ -23,7 +23,7 @@ class _DropDownCitiesState extends State<DropDownCities> {
     "Russia",
     "USA",
   ];
-  Stats stats = Stats(null, null, null);
+  Stats stats = Stats(cases: null, deaths: null, recovered: null);
   void getStats(String country) async {
     var url = Uri.parse(
         "https://coronavirus-19-api.herokuapp.com/countries/$country");
@@ -34,12 +34,11 @@ class _DropDownCitiesState extends State<DropDownCities> {
 
     setState(() {
       Stats obj = new Stats(
-        responseData["cases"],
-        responseData["recovered"],
-        responseData["deaths"],
+        cases: responseData["cases"],
+        deaths: responseData["deaths"],
+        recovered: responseData["recovered"],
       );
       stats = obj;
-     
     });
   }
 
@@ -119,10 +118,11 @@ class _DropDownCitiesState extends State<DropDownCities> {
           CurrentStats(
             cases: stats.cases,
             recovered: stats.recovered,
-            deaths: stats.recovered,
+            deaths: stats.deaths,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Text("Spread of Virus",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,

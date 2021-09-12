@@ -1,9 +1,9 @@
-class Stats{
- 
+import 'package:flutter/cupertino.dart';
+
+class Stats {
   final cases;
   final deaths;
   final recovered;
-  
-  Stats(this.cases, this.deaths, this.recovered,);
-  
+
+  Stats({@required this.cases, @required this.deaths, @required this.recovered});
 }

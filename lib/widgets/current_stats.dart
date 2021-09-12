@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import '../widgets/stat_count.dart';
 
 class CurrentStats extends StatelessWidget {
   const CurrentStats({
     Key key,
-    this.cases,
-    this.recovered,
-    this.deaths,
+    @required this.cases,
+    @required this.deaths,
+    @required this.recovered,
   }) : super(key: key);
 
   final cases;
@@ -18,30 +19,28 @@ class CurrentStats extends StatelessWidget {
       child: (cases == null || deaths == null || recovered == null)
           ? Center(child: CircularProgressIndicator())
           : Container(
-              // width: double.infinity,
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.shade200,
+                      color: Colors.grey.shade300,
                       offset: const Offset(
                         8.0,
-                        14.0,
+                        4.0,
                       ),
                       blurRadius: 18.0,
                       spreadRadius: 0.0,
-                    ), //BoxShadow:
+                    ),
                   ],
                   borderRadius: BorderRadius.horizontal(
                       left: Radius.circular(32), right: Radius.circular(32))),
               clipBehavior: Clip.antiAlias,
               child: Card(
-                elevation: 1,
+                elevation: 0,
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.horizontal(
                       left: Radius.circular(12), right: Radius.circular(12)),
                 ),
-                // clipBehavior: Clip.hardEdge,
                 margin: EdgeInsets.all(16.0),
                 child: Padding(
                   padding:
@@ -69,40 +68,6 @@ class CurrentStats extends StatelessWidget {
                 ),
               ),
             ),
-    );
-  }
-}
-
-class StatCount extends StatelessWidget {
-  const StatCount({
-    Key key,
-    @required this.count,
-    @required this.color,
-    @required this.type,
-  }) : super(key: key);
-
-  final count;
-  final type;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return FittedBox(
-      fit: BoxFit.cover,
-      child: Column(
-        children: [
-          Text(
-              "${count.toString().substring(0, count.toString().length > 4 ? 4 : count.toString().length)}",
-              style: TextStyle(
-                  color: color,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold)),
-          Text(
-            "${type.toString().toUpperCase()}",
-            style: TextStyle(color: color, fontSize: 14),
-          ),
-        ],
-      ),
     );
   }
 }
